@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs')
 const getUser = async (req, res) => {
     res.status(200).json(req.session.user)
 }
+
 const register = async (req, res) => {
     const db = req.app.get('db');
     const {username, password} = req.body;
@@ -17,16 +18,17 @@ const register = async (req, res) => {
 
         const newUser = await db.auth.registerUser(username, hash);
         req.session.user = {
+            user_id: newUser[0].user_id,
             username: newUser[0].username,
             profile_pic: newUser[0].profile_pic
         };
         res.status(200).json(req.session.user);
     }
 }
+
 const login = async (req, res) => {
     const db = req.app.get('db');
     const {username, password} = req.body;
-    console.log(username)
 
     const foundUser = await db.auth.checkForUsername(username);
 
@@ -39,6 +41,7 @@ const login = async (req, res) => {
             res.status(403).json('Username or Password is incorrect 2');
         }else{
             req.session.user = {
+                user_id: foundUser[0].user_id,
                 username: foundUser[0].username,
                 profile_pic: foundUser[0].profile_pic 
             }
@@ -46,6 +49,7 @@ const login = async (req, res) => {
         }
     }
 }
+
 const logout = async (req, res) => {
     req.session.destroy();
     res.status(200).json('logged out successfully')
