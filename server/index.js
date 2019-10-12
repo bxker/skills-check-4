@@ -37,11 +37,13 @@ app.post('/auth/login', login);
 app.post('/auth/logout', logout);
 
 
-//api endpoints
-app.get('/api/posts', getAllPosts)
-app.get('/api/posts/:user_id', getPostsByUser);
+//posts endpoints
+app.get('/api/posts', getAllPosts);
+app.get('/api/posts/userposts', getPostsByUser);
 app.get('/api/post/:post_id', getPostsByPost);
 app.post('/api/post', postBlog);
+
+
 
 //server connection
 app.listen(SERVER_PORT, () => console.log(`Server listening on port ${SERVER_PORT}`));
