@@ -40,7 +40,7 @@ app.post('/auth/logout', logout);
 //api endpoints
 app.get('/api/posts', getAllPosts)
 app.get('/api/posts/:user_id', getPostsByUser);
-app.get('/api/posts/:post_id', getPostsByPost);
+app.get('/api/post/:post_id', getPostsByPost);
 app.post('/api/post', postBlog);
 
 //server connection

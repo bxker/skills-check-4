@@ -5,11 +5,17 @@ const getAllPosts = async (req, res) => {
 }
 
 const getPostsByUser = async (req, res) => {
-
+    const db = req.app.get('db');
+    const {user_id} = req.params;
+    const posts = await db.posts.getPostsByUser(user_id); 
+    res.status(200).json(posts);
 }
 
 const getPostsByPost = async (req, res) => {
-
+    const db = req.app.get('db');
+    const {post_id} = req.params;
+    const post = await db.posts.getPostsByPost(post_id); 
+    res.status(200).json(post);
 }
 
 const postBlog = async (req, res) => {
