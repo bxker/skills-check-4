@@ -18,14 +18,7 @@ class Dashboard extends Component {
         this.props.getAllPosts()
     }
 
-    componentDidUpdate(prevProps){
-        if(prevProps.posts !== this.props.posts){
-
-        }
-    }
-
     handleInputText = e => {
-        console.log(e.target.value)
         this.setState({
             [e.target.name]: e.target.value
         })
@@ -34,6 +27,10 @@ class Dashboard extends Component {
     searchUpdate = () => {
         const {searchText} = this.state
         this.props.searchPosts(searchText);
+    }
+
+    clearSearch = () => {
+        this.props.getAllPosts()
     }
 
     render() {
@@ -46,6 +43,7 @@ class Dashboard extends Component {
                         onChange={this.handleInputText}
                     ></input>
                     <button onClick={this.searchUpdate}>Search</button>
+                    <button onClick={this.clearSearch}>Clear</button>
                 </div>
                     {this.props.posts ? this.props.posts.map((post, i) => {
                         return(

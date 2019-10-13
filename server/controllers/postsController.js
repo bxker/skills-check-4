@@ -7,7 +7,6 @@ const getAllPosts = async (req, res) => {
 const getPostsByUser = async (req, res) => {
     const db = req.app.get('db');
     const {username} = req.query;
-    console.log(username)
     const posts = await db.posts.getPostsByUser(`${username}%`); 
     res.status(200).json(posts);
 }
