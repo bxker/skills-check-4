@@ -3,16 +3,36 @@ import './App.css';
 import Nav from './Components/Nav/Nav';
 // import Login from './Components/Login/Login'
 import routes from './routes';
+import Login from './Components/Login/Login';
+import {connect} from 'react-redux';
+import {getSession} from '../src/redux/reducers/userReducer';
 
 class App extends Component {
+  componentDidMount(){
+    this.props.getSession();
+  }
+
   render(){
     return (
       <div className="App">
-        <Nav />
-        {routes}
+        {!this.props.user_id ?
+          <Login />
+          :
+          <div>
+            <Nav />
+            {routes}
+          </div>
+        }
       </div>
     )
   }
 }
 
-export default App;
+const mapStateToProps = reduxState => {
+  return {
+      user_id: reduxState.userReducer.user_id
+  }
+}
+export default connect(mapStateToProps, {
+  getSession
+})(App)
