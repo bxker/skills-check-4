@@ -2,16 +2,17 @@ import React, {Component} from 'react'
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {logoutUser} from '../../redux/reducers/userReducer';
+import '../styles/Nav/Nav.sass';
 
 class Nav extends Component {
     render(){
         return (
             <>
-                <div>
-                    <section>
+                <div className="nav-main">
+                    <section className="nav-section-1">
                         <img src={this.props.profile_pic}></img>
                     </section>
-                    <section>
+                    <section className="nav-section-2">
                         <Link to="/"><button onClick={this.props.logoutUser}>Logout</button></Link>
                     </section>
                 </div>

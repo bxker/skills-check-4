@@ -1,1 +1,12 @@
-/* No CSS *//*# sourceMappingURL=App.css.map */
+.App {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.main-flex {
+  width: 100vw;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+/*# sourceMappingURL=App.css.map */

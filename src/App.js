@@ -18,7 +18,7 @@ class App extends Component {
         {!this.props.user_id ?
           <Login />
           :
-          <div>
+          <div className="main-flex">
             <Nav />
             {routes}
           </div>
