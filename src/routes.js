@@ -10,7 +10,7 @@ export default (
         <Route exact path="/" component={Login}/>
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/post/:id" component={Post} />
-        <Route path="/post/add" component={AddPost}/>
+        <Route path="/add" component={AddPost}/>
         <Route render={() => {
             return <h1>404 Not Found</h1>
         }}/>

@@ -22,6 +22,7 @@ const register = async (req, res) => {
             username: newUser[0].username,
             profile_pic: newUser[0].profile_pic
         };
+        console.log(req.session.user, 'register')
         res.status(200).json(req.session.user);
     }
 }
@@ -29,7 +30,6 @@ const register = async (req, res) => {
 const login = async (req, res) => {
     const db = req.app.get('db');
     const {username, password} = req.body;
-    console.log(req.body)
 
     const foundUser = await db.auth.checkForUsername(username);
 
@@ -46,6 +46,7 @@ const login = async (req, res) => {
                 username: foundUser[0].username,
                 profile_pic: foundUser[0].profile_pic 
             }
+            console.log(req.session.user, 'login')
             res.status(200).json(req.session.user)
         }
     }
