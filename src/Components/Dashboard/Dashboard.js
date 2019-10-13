@@ -31,6 +31,9 @@ class Dashboard extends Component {
 
     clearSearch = () => {
         this.props.getAllPosts()
+        this.setState({
+            searchText: ''
+        })
     }
 
     render() {
@@ -41,6 +44,7 @@ class Dashboard extends Component {
                         placeholder="Search By Username"
                         name="searchText"
                         onChange={this.handleInputText}
+                        value={this.state.searchText}
                     ></input>
                     <button onClick={this.searchUpdate}>Search</button>
                     <button onClick={this.clearSearch}>Clear</button>
